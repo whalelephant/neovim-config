@@ -342,19 +342,12 @@ M.nvterm = {
       "Toggle vertical term",
     },
 
-    -- new
+    -- hint
     ["<leader>h"] = {
       function()
-        require("nvterm.terminal").new "horizontal"
+        require("custom.functions").toggle_inlay_hints()
       end,
-      "New horizontal term",
-    },
-
-    ["<leader>v"] = {
-      function()
-        require("nvterm.terminal").new "vertical"
-      end,
-      "New vertical term",
+      "Toggle inlay hints",
     },
   },
 }

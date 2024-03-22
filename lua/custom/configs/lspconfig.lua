@@ -4,26 +4,29 @@ local capabilities = config.capabilities
 
 local lspconfig = require "lspconfig"
 
-lspconfig.rust_analyzer.setup {
-  on_attach = on_attach,
-  capabilities = capabilities,
-  filetypes = { "rust" },
-  root_dir = lspconfig.util.root_pattern "Cargo.toml",
-  settings = {
-    ["rust_analyzer"] = {
-      cargo = {
-        allFeatures = true,
-        sysroot = "/Users/belsy/.cargo/bin/rustup",
-      },
-      procMacro = {
-        enable = true,
-      },
-      diagnostics = {
-        enable = true,
-      },
-    },
-  },
-}
+-- lspconfig.rust_analyzer.setup {
+--   on_attach = on_attach,
+--   capabilities = capabilities,
+--   filetypes = { "rust" },
+--   root_dir = lspconfig.util.root_pattern "Cargo.toml",
+--   flags = {
+--     exit_timeout = false,
+--   },
+--   settings = {
+--     ["rust_analyzer"] = {
+--       cargo = {
+--         allFeatures = true,
+--         sysroot = "/Users/belsy/.cargo/bin/rustup",
+--       },
+--       procMacro = {
+--         enable = true,
+--       },
+--       diagnostics = {
+--         enable = true,
+--       },
+--     },
+--   },
+-- }
 
 lspconfig.gopls.setup {
   on_attach = on_attach,

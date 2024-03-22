@@ -2,11 +2,40 @@
 -- List of all default plugins & their definitions
 local default_plugins = {
 
-  --  {
-  --    "mrcjkb/rustaceanvim",
-  --    version = "^4", -- Recommended
-  --    ft = { "rust" },
-  --  },
+  {
+    "mrcjkb/rustaceanvim",
+    version = "^4", -- Recommended
+    ft = { "rust" },
+    config = function(_, _)
+      vim.g.rustaceanvim = {
+        server = {
+          on_attach = function(client, buffer)
+            require("core.utils").load_mappings("lspconfig", { buffer = buffer })
+            require("nvchad.signature").setup(client)
+          end,
+        },
+        settings = {
+          ["rust_analyzer"] = {
+            cargo = {
+              allFeatures = true,
+              sysroot = "/Users/belsy/.cargo/bin/rustup",
+            },
+            procMacro = {
+              enable = true,
+              ignored = {
+                ["async-trait"] = { "async_trait" },
+                ["async-recursion"] = { "async_recursion" },
+              },
+            },
+            diagnostics = {
+              enable = true,
+            },
+            checkOnSave = false,
+          },
+        },
+      }
+    end,
+  },
 
   "nvim-lua/plenary.nvim",
 
